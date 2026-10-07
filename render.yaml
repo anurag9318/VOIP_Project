@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: voip-platform-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: ALLOW_VERCEL_PREVIEWS
+        value: "true"

@@ -1,0 +1,21 @@
+VOIP PLATFORM - MEDIA + MESSAGE NOTIFICATION PATCH
+====================================================
+
+Fixed:
+1. Direct WebRTC calls now guard navigator.mediaDevices/getUserMedia and show useful
+   secure-context, permission, device, and browser errors.
+2. Direct WebRTC signaling waits for local media/peer initialization so an offer or
+   ICE message cannot be lost during component startup.
+3. Local media tracks are stopped and peer connections are closed on call cleanup.
+4. Room calls now use the same media availability checks and initialization ordering.
+5. Direct message Socket.IO payloads now include populated sender/receiver user data.
+6. Direct-message notifications now include sender name and sender ID.
+7. Notification panel identifies the sender and allows opening the matching conversation.
+8. Sender-side echoed messages do not create a false incoming notification.
+
+Important:
+- localhost is a secure context in modern browsers.
+- Camera/microphone access from a phone using an HTTP LAN IP generally requires HTTPS.
+- For calls across difficult networks, configure VITE_TURN_SERVER, VITE_TURN_USERNAME,
+  and VITE_TURN_PASSWORD. STUN alone is not guaranteed to establish a peer connection.
+- Production deployments should use HTTPS.
